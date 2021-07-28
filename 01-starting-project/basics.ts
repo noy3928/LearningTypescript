@@ -17,10 +17,13 @@ let hobbies: string[];
 
 hobbies = ['Sports', 'Cooking'];
 
-let person: {
+//type alias는 타입스크립트에서만 사용하는 선언방법이다. 여기에는 타입만을 저장하고, 저장한 타입을 다른곳에서 적용할 수 있다. 
+type Person = {
     name:string;
     age:number;
-};
+}
+
+let person: Person;
 
 person = {
     name:'Max',
