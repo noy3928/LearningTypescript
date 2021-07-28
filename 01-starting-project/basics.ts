@@ -2,7 +2,8 @@ let age:number;
 
 age = 12;
 
-let userName:string;
+//문자열과 문자열배열 이 두가지 타입을 동시에 지정할 수 있다. 
+let userName:string | string[];
 
 userName = 'Max';
 
@@ -32,3 +33,6 @@ let people: {
 }[]
 
 //Type inference
+let course: string | number = 'React - The Complete Guide';
+
+course = 12341;
