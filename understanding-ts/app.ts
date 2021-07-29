@@ -1,65 +1,16 @@
-//타입스크립트에서 객체를 선언하는 방법 
-// const person:{
-//     name:string;
-//     age:number;
-// } = {
-//     name: 'Leo',
-//     age:30,
-// }
-
-// const person: {
-//     name: string;
-//     age: number;
-//     hobbies: string[];
-//     role:[number, string]; 
-//     //이것이 튜플을 선언하는 방식이다. 이것이 타입스크립트에게 말하는 것은 무엇이냐? 나는 배열을 가질 것인데, 첫번째는 number이어야 하고, 두번째는 string이어야 한다는 것을 말하는 것이다. 
-// } = {
-//     name: 'Leo',
-//     age:30,
-//     hobbies:["Sports", "Cookings"],
-//     role: [2, 'author'] // 이것은 유니온 타입이라고 부르기도 한다. 
-// }
-
-// const ADMIN = 0;
-// const READ_ONLY = 1;
-// const AUTHOR = 2;
-
-//컴파일 후에 js파일에서 어떻게 변했는지 보기.
-//enum에서는 숫자든, 문자열이든 다 타입선언이 가능하다.
-enum Role {
-    ADMIN = 5, //이렇게 시작하게 되면 + 1 씩 증가한다.
-    READ_ONLY,
-    AUTHOR
+//유니온 타입에 대하여 
+function combine(input1: number | string , input2:number | string ){
+    let result
+    if(typeof input1 === 'number' && typeof input2 === 'number'){
+        result = input1 + input2; // 처음에 이 유니언을 선언했을 때, 여기서 에러가 나는 이유는 +에서 에러가 나는 경우에 있을 수 있기 때문에 그런 것이다. 
+    }else {
+        result = input1.toString() + input2.toString();
+    }
+    return result;
 }
 
-/* -----여기서부터는 enum을 위한 코드------ */
-const person = {
-    name: 'Leo',
-    age:30,
-    hobbies:["Sports", "Cookings"],
-    role: Role.ADMIN // 이것은 유니온 타입이라고 부르기도 한다. 
-}
+const combinedAges = combine(30, 26);
+console.log(combinedAges)
 
-
-
-// person.role.push('admin'); // 그런데 이 부분에서는 에러가 나지 않는 이유는 무엇일까? 사실 push는 예외사항이다. 튜플이 허락하게 되는. 그리고 이것을 타입스크립트는 잡아내지 못한다. 
-// person.role[1] = 10; //위에서 튜플을 선언했기 떄문이 이 부분에서 에러가 나게 된다. 
-
-// person.role = [0, 'admin', 'user'] //만약에 이와같이 정해진 튜플의 갯수를 넘어서거나, 아예 빈 배열을 만들려고 하는 경우에는 에러가 생긴다. 
-
-let favoriteActivities: string[];
-// favoriteActivities = 'sports' // 이런 식으로 저장하면 에러가 난다. 
-// favoriteActivities = ['Sports', 1] // 이렇게 숫자와 섞어도 에러가 난다. 
-favoriteActivities = ['Sports'];
-
-console.log(person.name)
-
-for ( const hobby of person.hobbies) {
-    //이런식으로 처음부터 접근해도 타입스크립트는 뭐라고 하지 않는다. 왜냐하면 위에서 부터 이녀석의 타입을 알고 있기 때문이다. 
-    console.log(hobby.toUpperCase()) 
-    // console.log(hobby.map()) // 이런 식으로 선언하면, 에러를 내보낸다. 이것은 문자열이지 문자열 배열이 아니기 때문이다. 이런 포인트에서 타입스크립트는 빛이 난다. 
-}
-
-if(person.role === Role.AUTHOR){
-    console.log('is author')
-}
+const combinedNames = combine('Max', 'Anna') // 이렇게 한번에 두 가지를 다 선언하고 싶은 경우에 도와주는 것이 유니온 타입이다. 
+console.log(combinedNames)
