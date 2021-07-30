@@ -1,23 +1,15 @@
-//유니온 타입에 대하여 
-function combine(input1, input2, resultConversion) {
-    var result;
-    if (typeof input1 === 'number' && typeof input2 === 'number' || resultConversion === 'as-number') {
-        result = +input1 + +input2; // 처음에 이 유니언을 선언했을 때, 여기서 에러가 나는 이유는 +에서 에러가 나는 경우에 있을 수 있기 때문에 그런 것이다. 
-    }
-    else {
-        result = input1.toString() + input2.toString();
-    }
-    return result;
-    // if(resultConversion === 'as-number'){
-    //     return +result; //이렇게 + 기호를 넣는 것은 parseFloat의 줄임문법이다. 
-    // }else{
-    //     return result.toString();
-    // }
-    // return result;
-}
-var combinedAges = combine(30, 26, 'as-number');
-console.log(combinedAges);
-var combinedStringAges = combine('30', '26', 'as-number');
-console.log(combinedStringAges);
-var combinedNames = combine('Max', 'Anna', 'as-text'); // 이렇게 한번에 두 가지를 다 선언하고 싶은 경우에 도와주는 것이 유니온 타입이다. 
-console.log(combinedNames);
+"use strict";
+// let userInput: unknown; // 유저가 무엇을 입력할 지 모를 때. 
+// let userName: string;
+// userInput = 5;
+// userInput = 'Max';
+// //이렇게 두가지를 다 해도 문제가 되지 않는다. 
+// // userName = userInput; // 여기서 unknown인 경우에는 에러를 발생시키고, any인 경우에는 에러를 발생시키지 않는다. any는 타입스크립트에서 가장 자유로운 타입이다. 
+// if(typeof userInput === 'string'){
+//     userName = userInput; // 이렇게 하면 타입스크립트가 에러를 내보내지 않는다. unknown은 어떤 값이어도 괜찮지만, 한번의 체크는 필요하다. any보다는 조금 더 엄격한 타입이다. 
+// }
+// //unknown은 any와 뭐가 다를까? 
+// function generateError(message: string, code: number){
+//     throw {message: message, errorCode: code};
+// }
+// // generateError('An error occured!, 500)
