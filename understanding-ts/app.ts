@@ -11,3 +11,9 @@ if(typeof userInput === 'string'){
 }
 
 //unknown은 any와 뭐가 다를까? 
+
+function generateError(message: string, code: number){
+    throw {message: message, errorCode: code};
+}
+
+generateError('An error occured!, 500)
