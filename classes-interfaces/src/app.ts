@@ -23,7 +23,30 @@ class Department {
     }
 }
 
-const accounting = new Department('Accounting');
+//extends를 활용하면 기존의 class의 속성들을 가져와서 사용할 수 있다. 
+class ITDepartment extends Department {
+    admins: string[];
+    constructor(id: string, admins: string[]) {
+        super(id, 'IT');
+        this.admins = admins
+    }
+}
+
+class AccountingDepartment extends Department{
+    constructor(id:string, private reports: string[]){
+        super(id, 'Accounting');
+    }
+
+    addReport(text: string){
+        this.reports.push(text);
+    }
+
+    getReports(){
+        console.log(this.reports)
+    }
+}
+
+const accounting = new ITDepartment('d1',['Max']);
 
 accounting.addEmployee('Max');
 accounting.addEmployee('Manu')
@@ -33,7 +56,6 @@ accounting.name = 'NEW'//이것은 퍼블릭 타입에 의해서 가능해 진 �
 
 accounting.describe();
 accounting.printEmployeeInformation();
-
 
 
 // const accountingCopy = {name: 's', describe: accounting.describe};
