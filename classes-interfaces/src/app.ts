@@ -1,7 +1,8 @@
 // Code goes here!
 class Department {
     // public name: string; //이것은 클래스의 필드라고 불린다. | public타입은 바깥에서도 이 값에 접근할 수 있게 한다. 
-    private employees:string[] = []; // private는 클래스 내부에서는 값을 사용할 수 있게 한다. 
+    // private employees:string[] = []; // private는 클래스 내부에서는 값을 사용할 수 있게 한다. 
+    protected employees:string[] = []; // protected는 이 클래스 안에서만 가능할 뿐 아니라, 다른 상속받은 클래스 안에서도 사용이 가능하다.
 
     //파라미터에서부터 private와 public을 선언할 수 있다. | readonly는 값을 선언하고 난 이후에는 다시 값을 변경할 수 없다. 
     constructor(private readonly id:string, public name : string){
@@ -35,6 +36,14 @@ class ITDepartment extends Department {
 class AccountingDepartment extends Department{
     constructor(id:string, private reports: string[]){
         super(id, 'Accounting');
+    }
+
+    //상속받은 클래스에서 해당 값을 protect로 한 덕분에 사용할 수 있는 값이다.
+    addEmployee(name: string){
+        if(name === 'Max'){
+            return;
+        }
+        this.employees.push(name);
     }
 
     addReport(text: string){
