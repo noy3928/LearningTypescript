@@ -34,8 +34,26 @@ class ITDepartment extends Department {
 }
 
 class AccountingDepartment extends Department{
+    private lastReport : string;
+
+    get mostRecentReport() {
+        if(this.lastReport){
+            return this.lastReport;
+        }
+        throw new Error('No report found.')
+    }
+
+    //세터를 이렇게 선언해두고나면 나중에 = 방식으로 할당하면 그것이 바로 사용법이 된다. 
+    set mostRecentReport(value: string) {
+        if(!value){
+            throw new Error('Please pass in a valid value!')
+        }
+        this.addReport(value);
+    }
+
     constructor(id:string, private reports: string[]){
         super(id, 'Accounting');
+        this.lastReport = reports[0];
     }
 
     //상속받은 클래스에서 해당 값을 protect로 한 덕분에 사용할 수 있는 값이다.
@@ -48,6 +66,7 @@ class AccountingDepartment extends Department{
 
     addReport(text: string){
         this.reports.push(text);
+        this.lastReport = text;
     }
 
     getReports(){
@@ -55,7 +74,10 @@ class AccountingDepartment extends Department{
     }
 }
 
-const accounting = new ITDepartment('d1',['Max']);
+const accounting = new AccountingDepartment('d2',[]);
+
+//이것이 세터를 사용하는 방법이다. 
+accounting.mostRecentReport = ''
 
 accounting.addEmployee('Max');
 accounting.addEmployee('Manu')

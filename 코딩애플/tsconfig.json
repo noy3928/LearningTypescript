@@ -1,0 +1,10 @@
+//이 안에서는 컴파일 할 때의 
+
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "noImplicitAny": true,
+        "strictNullChecks": true
+    }
+}
