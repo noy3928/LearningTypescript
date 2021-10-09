@@ -34,3 +34,34 @@ var 회원가입 = {
     email: 'noy3928',
     adult: false
 };
+function 가위바위보(x) {
+    return ['가위'];
+}
+var 회원정보 = {
+    name: 'kim',
+    age: 30,
+    // plusOne : (x : number) => number,
+    changeName: function () { },
+};
+var cutZero = function (x) {
+    if (x[0] == '0') {
+        return x.slice(1);
+    }
+    else {
+        return x;
+    }
+};
+var removeDash = function (x) {
+    var result = x.replace(/-/g, "");
+    return parseFloat(result);
+};
+var 학생 = { name: 'kim' };
+var 선생 = { name: 'kim', age: 20 };
+function 함수(x) {
+    if (x.wheel === '4개') {
+        console.log('이 차의 바퀴 갯수는 ' + x.wheel + '개 입니다.');
+    }
+    else {
+        console.log('이 차의 바퀴 갯수는 ' + x.wheel + '개 입니다.');
+    }
+}
