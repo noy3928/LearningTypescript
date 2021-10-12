@@ -224,3 +224,33 @@ type Car = {
       console.log('이 차의 바퀴 갯수는 ' + x.wheel +'개 입니다.')
     }
   }
+
+class Users {
+ private static x = 10;
+ public static y = 20;
+
+ addOne(a : number) : number{
+    return Users.x + a
+ }
+}
+
+class Square{
+
+    constructor(public width: number, public height: number, public color: string){
+    }
+
+    draw(){
+        let a = Math.random();
+        let square = `<div style="position: relative;
+        top:${a * 400}px;
+        let:${a * 400}px;
+        width:${this.width}px;
+        height:${this.height}px;
+        background:${this.color}"></div>`;
+        document.body.insertAdjacentHTML('beforeend', square);
+    }
+}
+
+let 네모 = new Square(30,30, 'red');
+
+
