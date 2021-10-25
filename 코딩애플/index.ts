@@ -1,4 +1,5 @@
 
+
 type 엔터테인먼트 = {
     노래제목 : string,
     가수 : string,
@@ -253,4 +254,39 @@ class Square{
 
 let 네모 = new Square(30,30, 'red');
 
+/// <reference path="./type.ts" />
 
+let car : Behicle.Car = {
+    wheel : 4,
+    model : "genesis",
+}
+
+
+
+
+function showLength<Type extends string | string[]>(x :Type){
+return x.length
+}
+
+showLength('hellow')
+
+
+interface Animal {
+    name : string;
+    age : number 
+  }
+  
+let data = '{"name" : "dog", "age" : 1 }'
+
+function jsonParse<Animal extends string>(x : Animal){
+return JSON.parse(x)
+}
+
+class Person<Type>{
+    name;
+    constructor(a: Type){
+        this.name = a;
+    }
+}
+let a= new Person('어쩌구');
+a.name
